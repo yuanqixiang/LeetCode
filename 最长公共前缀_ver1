@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int len=strs.size();
+        if(len==0) return "";
+        if(len==1) return strs.at(0);
+        if(len==2) return compare_2_string(std::move(strs[0]),std::move(strs[1]));
+        
+        int mid=len/2;
+        auto beg=strs.begin();
+        vector<string> strs1(beg,beg+mid);
+        vector<string> strs2(beg+mid,strs.end());
+        //string str1=longestCommonPrefix(strs1);
+        //string str2=longestCommonPrefix(strs2);
+        //return compare_2_string(str1,str2);
+        return compare_2_string(longestCommonPrefix(strs1),longestCommonPrefix(strs2));
+    }
+  private:
+   string compare_2_string(string&& s1,string&& s2){
+       int index=0;
+       string str="";
+       while(s1[index]==s2[index]){
+           str+=s1[index];
+           ++index;
+       }
+       return str;
+   }
+};
