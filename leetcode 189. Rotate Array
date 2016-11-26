@@ -1,0 +1,12 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int len = nums.size();
+        k%=len;
+        auto iter = nums.begin();
+        reverse(iter,iter+len);
+        reverse(iter,iter+k);
+        reverse(iter+k,iter+len);
+        
+    }
+};
