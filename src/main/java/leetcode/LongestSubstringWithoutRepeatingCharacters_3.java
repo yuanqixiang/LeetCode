@@ -24,7 +24,10 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
     }
 
     /*
-     * maintain a sliding window, with its elements in a set,
+     * maintain a sliding window, with its elements in a set.
+     * every time there is a duplicate char, we will scale the window with i++,
+     * util the duplicate char evicted from the window.
+     * if the set does not contain the char, it must be added in the set.
      */
     public int solutionUsingSlidingWindows(String s){
         int n = s.length();
