@@ -1,2 +1,3 @@
-# HelloWorld
-this is my first step,i need to grow on this platform!
+# LeetCode
+LeetCode problems resolutions mainly based on Java language.
+Record my thinking、thoughts...
