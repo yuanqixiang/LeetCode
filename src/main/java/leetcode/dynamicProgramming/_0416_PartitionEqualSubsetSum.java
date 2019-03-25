@@ -9,6 +9,8 @@ import java.util.Arrays;
  *      such that the sum of elements in both subsets is equal.
  * Analysis:
  *      0-1 背包: 对于一个数组，选择几个数使sum = sum(all elements)
+ *      dp[i][j]: 数组nums，从前i个数中是否可以选择若干个数，使其和等于j,
+ *      dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]]
  */
 public class _0416_PartitionEqualSubsetSum {
     public boolean dpSolutionUsing2DArray(int[] nums){
@@ -36,5 +38,29 @@ public class _0416_PartitionEqualSubsetSum {
             }
         }
         return dp[m][sum];
+    }
+
+    /*
+     * optimize space 2-d to 1-d array
+     */
+    public boolean dpSolutionUsing1DArray(int[] nums){
+        int sum = 0;
+        for(int num : nums)
+            sum += num;
+        if((sum & 0x01) == 1)
+            return false;
+
+        sum /= 2;
+        int m = nums.length;
+        boolean[] dp = new boolean[sum + 1];
+        Arrays.fill(dp, false);
+        dp[0] = true;
+        for(int num : nums){
+            for(int j = sum; j >= num; --j){
+                dp[j] = dp[j] || dp[j - num];
+            }
+        }
+
+        return dp[sum];
     }
 }
