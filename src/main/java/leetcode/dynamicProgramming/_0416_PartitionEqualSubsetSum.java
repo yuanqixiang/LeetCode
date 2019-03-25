@@ -60,7 +60,27 @@ public class _0416_PartitionEqualSubsetSum {
                 dp[j] = dp[j] || dp[j - num];
             }
         }
-
         return dp[sum];
+    }
+
+    /*
+     * recursion solution
+     */
+
+    public boolean solutionUsingRecursion(int[] nums){
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if((sum & 0x01) == 1) return false;
+        sum /= 2;
+        Arrays.sort(nums);
+        return helper(nums, sum, 0);
+    }
+
+    private boolean helper(int[] nums, int sum, int index){
+        if(sum == nums[index]) return true;
+        if(sum < nums[index]) return false;
+        return helper(nums, sum - nums[index], index + 1) || helper(nums, sum, index + 1);
     }
 }
