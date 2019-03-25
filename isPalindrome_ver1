@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        int t=x;
-        if(t<0)
+        int t = x;
+        if(t < 0)
            return false;
         vector<int> vec;
         while(t/10){
