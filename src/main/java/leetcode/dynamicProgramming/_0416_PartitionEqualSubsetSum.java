@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Analysis:
  *      0-1 背包: 对于一个数组，选择几个数使sum = sum(all elements)
  */
-public class _416_PartitionEqualSubsetSum {
+public class _0416_PartitionEqualSubsetSum {
     public boolean dpSolutionUsing2DArray(int[] nums){
         int sum = 0;
         for(int num : nums)

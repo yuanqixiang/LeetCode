@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class _3_LongestSubstringWithoutRepeatingCharacters {
+public class _0003_LongestSubstringWithoutRepeatingCharacters {
     /*
      *核心思想：遍历整个字符串的时候，需要记录每个字符‘最近’一次出现的索引，需要用一个Map来实现，
      *如果Map中已经存在该字符，就更新start值，

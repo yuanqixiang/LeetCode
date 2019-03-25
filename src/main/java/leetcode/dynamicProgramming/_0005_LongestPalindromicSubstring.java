@@ -1,6 +1,6 @@
 package leetcode.dynamicProgramming;
 
-public class _5_LongestPalindromicSubstring {
+public class _0005_LongestPalindromicSubstring {
    /*
     * DP:
     * 维护一个二维数组dp，其中dp[i][j]表示字符串区间[i, j]是否为回文串，
