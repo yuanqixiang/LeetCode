@@ -2,6 +2,8 @@ package leetcode.tree.binarySearchTree;
 
 import leetcode.dataStructures.TreeNode;
 
+import java.util.Stack;
+
 public class _0098_ValidateBinarySearchTree {
     public boolean isValidBST(TreeNode root) {
         if(root == null)
@@ -41,5 +43,24 @@ public class _0098_ValidateBinarySearchTree {
         if (min != null && min >= root.val) return false;
         if (max != null && max <= root.val) return false;
         return helper(root.left, min, root.val) && helper(root.right, root.val, max);
+    }
+
+    //see no.94、no.144、no.145
+    public boolean solutionUsingInOrder(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        Integer inorder = Integer.MIN_VALUE;
+        TreeNode curr = root;
+        while(curr != null || !stack.isEmpty()){
+            if(curr != null){
+                stack.push(curr);
+                curr = curr.left;
+            } else {
+                curr = stack.pop();
+                if(curr.val <= inorder) return false;
+                inorder = curr.val;
+                curr = curr.right;
+            }
+        }
+        return true;
     }
 }
