@@ -48,7 +48,7 @@ public class _0098_ValidateBinarySearchTree {
     //see no.94、no.144、no.145
     public boolean solutionUsingInOrder(TreeNode root){
         Stack<TreeNode> stack = new Stack<>();
-        Integer inorder = Integer.MIN_VALUE;
+        Integer prev = Integer.MIN_VALUE;
         TreeNode curr = root;
         while(curr != null || !stack.isEmpty()){
             if(curr != null){
@@ -56,8 +56,8 @@ public class _0098_ValidateBinarySearchTree {
                 curr = curr.left;
             } else {
                 curr = stack.pop();
-                if(curr.val <= inorder) return false;
-                inorder = curr.val;
+                if(curr.val <= prev) return false;
+                prev = curr.val;
                 curr = curr.right;
             }
         }
