@@ -40,9 +40,8 @@ import java.util.List;
 public class _0039_CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
-        //首先进行排序
         Arrays.sort(candidates);
-        helper(candidates, new LinkedList<Integer>(), res, 0, target);
+        helper(candidates, new LinkedList<>(), res, 0, target);
         return res;
     }
 
@@ -50,11 +49,10 @@ public class _0039_CombinationSum {
         if(remain < 0) return;
         if(remain == 0){
             res.add(new LinkedList<>(list));
+            return;
         }
-        for(int i = start; i < nums.length; ++i){
+        for (int i = start; i < nums.length; ++i) {
             list.add(nums[i]);
-            list.forEach(System.out::print);
-            System.out.println();
             helper(nums, list, res, i, remain - nums[i]);
             list.remove(list.size() - 1);
         }
