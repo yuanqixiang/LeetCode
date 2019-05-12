@@ -20,30 +20,6 @@ import java.util.List;
  *
  */
 public class _0047_PermutationsII {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
-        Arrays.sort(nums);
-        doPermute(nums, new LinkedList<>(), res, new boolean[nums.length]);
-        return res;
-    }
-
-    private void doPermute(int[] nums, List<Integer> list, List<List<Integer>> res, boolean[] used) {
-        if(list.size() == nums.length) {
-            res.add(new LinkedList<>(list));
-            return;
-        }
-
-        for(int i = 0; i < nums.length; ++i) {
-            if(used[i]) continue;
-            if(i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
-            list.add(nums[i]);
-            used[i] = true;
-            doPermute(nums, list, res, used);
-            list.remove(list.size() - 1);
-            used[i] = false;
-        }
-    }
-
     public static List<List<Integer>> solution(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         Arrays.sort(nums);
