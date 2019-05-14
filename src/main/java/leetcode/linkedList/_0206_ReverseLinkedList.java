@@ -1,6 +1,7 @@
 package leetcode.linkedList;
 
 import leetcode.dataStructures.ListNode;
+import leetcode.linkedList.utils.ListUtils;
 import org.junit.Test;
 
 public class _0206_ReverseLinkedList {
@@ -25,17 +26,6 @@ public class _0206_ReverseLinkedList {
         return newList;
     }
 
-    private String print(ListNode head) {
-        if (head == null) return "";
-        ListNode curr = head;
-        StringBuilder sb = new StringBuilder();
-        while (curr != null) {
-            sb.append(curr.val).append(" --> ");
-            curr = curr.next;
-        }
-        sb.replace(sb.length() - 5, sb.length(), "");
-        return sb.toString();
-    }
 
     @Test
     public void test() {
@@ -43,9 +33,9 @@ public class _0206_ReverseLinkedList {
         head.next = new ListNode(2);
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
-        System.out.println("original list: " + print(head));
+        System.out.println("original list: " + ListUtils.printList(head));
         ListNode newList = reverseListUsingRecursion(head);
-        String list = print(newList);
+        String list = ListUtils.printList(newList);
         System.out.println("reversed list: " + list);
     }
 }
