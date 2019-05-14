@@ -2,7 +2,7 @@ package leetcode.linkedList;
 
 import leetcode.dataStructures.ListNode;
 
-public class __0019RemoveNthNodeFromEndOfList {
+public class _0019_RemoveNthNodeFromEndOfList {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode nummy = new ListNode(0), cur = head, prev = nummy, p = head;
