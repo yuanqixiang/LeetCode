@@ -14,4 +14,13 @@ public class _0206_ReverseLinkedList {
         }
         return prev;
     }
+
+    public ListNode reverseListUsingRecursion(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode newList = reverseListUsingRecursion(head.next);
+        ListNode t1 = head.next;
+        t1.next = head;
+        head.next = null;
+        return newList;
+    }
 }
