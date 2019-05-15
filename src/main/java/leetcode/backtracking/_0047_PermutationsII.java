@@ -58,8 +58,8 @@ public class _0047_PermutationsII {
             return;
         }
 
-        //当我们枚举第i个位置的元素时，若要把后面第j个元素和i交换，
-        //则先要保证[i…j-1]范围内没有和位置j相同的元素。具体实现可以在每次需要交换时进行顺序查找。
+        //当我们枚举第start个位置的元素时，若要把后面第i个元素和start交换，
+        //则先要保证[start…i-1]范围内没有和位置i相同的元素。具体实现可以在每次需要交换时进行顺序查找。
         //hasDuplicate返回true，意味着i之前存在一个元素和nums[i]相等
         //例如，[1，2，2]，1和第一个2可以交换，但是对于第二个2，之前存在一个相等的2已经和1交换过，所以这一个2不需要和1交换
         for (int i = start; i < nums.length; ++i) {
@@ -85,7 +85,7 @@ public class _0047_PermutationsII {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 2};
+        int[] nums = new int[] {2, 2, 3};
         List<List<Integer>> res = solutionUsingSwap(nums);
         res.forEach(System.out::println);
     }
