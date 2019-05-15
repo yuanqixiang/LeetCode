@@ -58,6 +58,7 @@ public class _0047_PermutationsII {
             return;
         }
 
+        //https://zhuanlan.zhihu.com/p/34521538
         //当我们枚举第start个位置的元素时，若要把后面第i个元素和start交换，
         //则先要保证[start…i-1]范围内没有和位置i相同的元素。具体实现可以在每次需要交换时进行顺序查找。
         //hasDuplicate返回true，意味着i之前存在一个元素和nums[i]相等
