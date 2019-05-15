@@ -42,6 +42,7 @@ public class _0047_PermutationsII {
         }
     }
 
+    /*
     public static List<List<Integer>> solutionUsingSwap(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         Arrays.sort(nums);
@@ -78,10 +79,10 @@ public class _0047_PermutationsII {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-
+    */
     public static void main(String[] args) {
         int[] nums = new int[] {1, 2, 3, 4};
-        List<List<Integer>> res = solutionUsingSwap(nums);
+        List<List<Integer>> res = solution(nums);
         res.forEach(System.out::println);
     }
 }
