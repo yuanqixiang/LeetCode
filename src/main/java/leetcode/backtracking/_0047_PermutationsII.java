@@ -42,7 +42,7 @@ public class _0047_PermutationsII {
         }
     }
 
-    /*
+
     public static List<List<Integer>> solutionUsingSwap(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         Arrays.sort(nums);
@@ -57,13 +57,17 @@ public class _0047_PermutationsII {
             res.add(list);
             return;
         }
-        for (int i = start + 1; i < nums.length - 1; ++i) {
-            if(hasDuplicate(nums, start, i)) {
-                continue;
+
+        //当我们枚举第i个位置的元素时，若要把后面第j个元素和i交换，
+        //则先要保证[i…j-1]范围内没有和位置j相同的元素。具体实现可以在每次需要交换时进行顺序查找。
+        //hasDuplicate返回true，意味着i之前存在一个元素和nums[i]相等
+        //例如，[1，2，2]，1和第一个2可以交换，但是对于第二个2，之前存在一个相等的2已经和1交换过，所以这一个2不需要和1交换
+        for (int i = start; i < nums.length; ++i) {
+            if(i == start || !hasDuplicate(nums, start, i)) {
+                swap(nums, i, start);
+                dfs(nums, start + 1, res);
+                swap(nums, i, start);
             }
-            swap(nums, i, start);
-            dfs(nums, start + 1, res);
-            swap(nums, i, start);
         }
     }
 
@@ -79,10 +83,10 @@ public class _0047_PermutationsII {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-    */
+
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 3, 4};
-        List<List<Integer>> res = solution(nums);
+        int[] nums = new int[] {1, 2, 2};
+        List<List<Integer>> res = solutionUsingSwap(nums);
         res.forEach(System.out::println);
     }
 }
