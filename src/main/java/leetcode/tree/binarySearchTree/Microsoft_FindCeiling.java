@@ -3,7 +3,7 @@ package leetcode.tree.binarySearchTree;
 import leetcode.dataStructures.TreeNode;
 
 /*
- * 在二叉搜索树中找最小的大于等于某个key值的节点
+ * 在二叉搜索树中查找大于等于某个key值的最小节点
  */
 public class Microsoft_FindCeiling {
     // 迭代实现
@@ -12,10 +12,26 @@ public class Microsoft_FindCeiling {
         while(current != null) {
             if(current.val < target)
                 current = current.right;
+            else if(current.val >= target) {
+                ceiling = current;
+                current = current.left;
+            }
+        }
+        return ceiling;
+    }
+
+    /*
+     * 在二叉搜索树中查找大于某个key值的最小节点
+     */
+    private static TreeNode findCeilingExcept(TreeNode root, int target) {
+        TreeNode ceiling = null, current = root;
+        while(current != null) {
+            if(current.val <= target)
+                current = current.right;
             else if(current.val > target) {
                 ceiling = current;
                 current = current.left;
-            } else return current;
+            }
         }
         return ceiling;
     }
@@ -32,6 +48,17 @@ public class Microsoft_FindCeiling {
     }
 
     public static void main(String[] args) {
+         /*
+          *            50
+          *           /  \
+          *         30    70
+          *        /  \
+          *      25    48
+          *           /  \
+          *         40    49
+          *           \
+          *            46
+          */
         TreeNode root = new TreeNode(50);
         TreeNode left = new TreeNode(30);
         TreeNode right = new TreeNode(70);
@@ -48,6 +75,7 @@ public class Microsoft_FindCeiling {
         TreeNode node5 = new TreeNode(46);
         node3.right = node5;
 
-        //System.out.println(findCeiling(root,50).val); //50
+        System.out.println(findCeiling(root,25).val);
+        System.out.println(findCeilingExcept(root,25).val);
     }
 }
